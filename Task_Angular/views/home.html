@@ -1,0 +1,17 @@
+﻿<div class="yearlyIncome">
+
+    <table id="q-graph">
+        <thead>
+        </thead>
+        <tbody>
+            <tr ng-repeat="income in incomes | orderBy : '+year'" id="q{{$index+1}}">
+                <th>{{income.year}}</th>
+                <td class="sent bar" style="height: {{income.total / 70}}%; width:120px;"><p>{{income.total | number:2}}</p></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="jumbotron text-center">
+    <h1>Yearly Income</h1>
+</div>
