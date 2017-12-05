@@ -76,6 +76,7 @@ namespace Task_API.Models
                 PhoneNumber = company.phoneNumber,
                 ZipCode = company.zipCode,
                 IsDeleted = company.IsDeleted,
+                CompanyImageUrl = company.CompanyUrl
             };
         }
 
@@ -92,6 +93,7 @@ namespace Task_API.Models
                 PhoneNumber = customer.Company.phoneNumber,
                 StreetAddress = customer.Company.StreetAddress,
                 IsDeleted = customer.IsDeleted,
+                CustomerImageUrl = customer.UserImageUrl
             };
         }
 

@@ -15,8 +15,6 @@ namespace Task_API.Helpers
         {
             SmtpClient SmtpServer = EmailHelper.SetSmtp();
             String Username = System.Configuration.ConfigurationManager.AppSettings["emailUsername"];
-            AppContext context = new AppContext();
-            Invoice Invoice = new Invoice();
 
             MailAddress from = new MailAddress(Username);
             string subject = "Invoice: ";

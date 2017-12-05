@@ -44,7 +44,7 @@ namespace Task_API.Models
         }
         public Company Create(CompanyModel model, AppContext context)
         {
-            return new Company
+            var companyEntity =  new Company
             {
                 Id = model.Id,
                 Name = model.Name,
@@ -54,17 +54,23 @@ namespace Task_API.Models
                 zipCode = model.ZipCode,
                 IsDeleted = model.IsDeleted,
             };
+            if (model.CompanyImageUrl == null)
+                model.CompanyImageUrl ="http://waters-company.com/wp-content/themes/watersconsulting_wp_theme/images/city_scape5b.jpg";
+            return companyEntity;
         }
 
         public Customer Create(CustomerModel model, AppContext context)
         {
-            return new Customer()
+            var customer = new Customer()
             {
                 Id = model.Id,
                 Name = model.Name,
                 Company = context.Companies.Find(model.Company),
                 IsDeleted = model.IsDeleted,
             };
+            if (model.CustomerImageUrl == null)
+                model.CustomerImageUrl = "https://www.atomix.com.au/media/2015/06/atomix_user31.png";
+            return customer;
         }
     }
 }

@@ -16,5 +16,6 @@ namespace Task_API.Models
         public string City { get; set; }
         public int ZipCode { get; set; }
         public string PhoneNumber { get; set; }
+        public string CustomerImageUrl { get; set; }
     }
 }

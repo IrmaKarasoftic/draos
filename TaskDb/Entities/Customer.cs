@@ -12,5 +12,6 @@ namespace TaskDb
         public string Name { get; set; }
         public virtual Company Company { get; set; }
         public bool IsDeleted { get; set; }
+        public string UserImageUrl { get; set; }
     }
 }

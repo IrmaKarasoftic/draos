@@ -9,6 +9,6 @@
         public int zipCode { get; set; }
         public string phoneNumber { get; set; }
         public bool IsDeleted { get; set; }
-        
+        public string CompanyUrl { get; set; }
     }
 }

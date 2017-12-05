@@ -1,77 +1,77 @@
 ﻿<!DOCTYPE html>
 <html ng-app="taskAngular">
 <head>
-    <meta charset="utf-8" />
-    <title>Task_Angular_Billing_App</title>
-    <base href="/">
-    <!-- CSS -->
+  <meta charset="utf-8" />
+  <title>Task_Angular_Billing_App</title>
+  <base href="/">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="css/chart.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrapYeti.css" S>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+  <link rel="stylesheet" href="css/toastr.css">
 
-    <link rel="stylesheet" href="css/chart.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrapYeti.css"S>
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+  <!-- JS -->
+  <script src="libs/angular.min.js"></script>
+  <script src="libs/angular-route.min.js"></script>
+  <script src="libs/jquery-3.1.0.min.js"></script>
+  <script src="libs/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+  <!--ANGULAR APP-->
+  <script src="scripts/app.js"></script>
+  <!-- ANGULAR CONTROLLERS -->
+  <script src="scripts/controllers/homeCtrl.js"></script>
+  <script src="scripts/controllers/invoicesCtrl.js"></script>
+  <script src="scripts/controllers/newInvoiceCtrl.js"></script>
+  <script src="scripts/controllers/itemsCtrl.js"></script>
+  <script src="scripts/controllers/customersCtrl.js"></script>
+  <script src="scripts/controllers/companiesCtrl.js"></script>
+  <script src="scripts/controllers/emailCtrl.js"></script>
 
-    <link rel="stylesheet" href="css/toastr.css">
-
-
-    <!-- JS -->
-    <script src="libs/angular.min.js"></script>
-    <script src="libs/angular-route.min.js"></script>
-    <script src="libs/jquery-3.1.0.min.js"></script>
-    <script src="libs/bootstrap.min.js"></script>
-    <!--ANGULAR APP-->
-    <script src="scripts/app.js"></script>
-    <!-- ANGULAR CONTROLLERS -->
-    <script src="scripts/controllers/homeCtrl.js"></script>
-    <script src="scripts/controllers/invoicesCtrl.js"></script>
-    <script src="scripts/controllers/newInvoiceCtrl.js"></script>
-    <script src="scripts/controllers/itemsCtrl.js"></script>
-    <script src="scripts/controllers/customersCtrl.js"></script>
-    <script src="scripts/controllers/companiesCtrl.js"></script>
-    <script src="scripts/controllers/emailCtrl.js"></script>
-
-
-    <script src="scripts/toastr.js"></script>
-    <script src="scripts/config/notifications-config.js"></script>
-
-    <!--ANGULAR SERVICES-->
-    <script src="scripts/services/dataService.js"></script>
+  <script src="scripts/toastr.js"></script>
+  <script src="scripts/config/notifications-config.js"></script>
+  <!--ANGULAR SERVICES-->
+  <script src="scripts/services/dataService.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <!-- HEADER -->
-                <div class="page-header">
-                    <br />
-                    <br />
-                    <h1>XYZ Billing<br />
-                        <small>Quick Invoice Management Service</small>
-                    </h1>
-                </div>
-                <nav class="navbar navbar-inverse navbar-fixed-top">
-                    <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-                    <ul class="nav navbar-nav">
-                        <li><a href="#/home"><strong>Home</strong></a></li>
-                        <li><a href="#/invoices"><strong>Invoices</strong></a></li>
-                        <li><a href="#/customers"><strong>Customers</strong></a></li>
-                        <li><a href="#/items"><strong>Items</strong></a></li>
-                        <li class="dropdown">
-                            <a href="_top" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="font-weight:bold">Companies<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#/companies">View all companies</a></li>
-                                <li><a href="#/newCompany">Add a company</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- ANGULAR DYNAMIC CONTENT -->
-                <div ng-view></div>
-                <br>
-                <br>
-            </div><!-- End Col-->
-        </div><!-- End Row -->
-    </div><!--End Container-->
+<div class="mainHtml">
+  <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display: none" id="mySidebar">
+    <button class="w3-bar-item w3-button w3-large"
+            onclick="w3_close()">
+      Close &times;
+    </button>
+    <a class="w3-bar-item w3-button" href="#/home" onclick="w3_close()"><strong>Home</strong></a>
+      <a class="w3-bar-item w3-button" href="#/invoices" onclick="w3_close()"><strong>Invoices</strong></a>
+      <a class="w3-bar-item w3-button" href="#/customers" onclick="w3_close()"><strong>Customers</strong></a>
+      <a class="w3-bar-item w3-button" href="#/items" onclick="w3_close()"><strong>Items</strong></a>
+      <a class="w3-bar-item w3-button" href="#/companies" onclick="w3_close()"><strong>Companies</strong></a>
+</div>
+  <div id="main">
+    <div class="w3-teal">
+      <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+      <h1 id="title-billing">XYZ Billing</h1>
+    </div>
+    <div id="pad">
+      <!-- ANGULAR DYNAMIC CONTENT -->
+      <div ng-view></div>
+    </div>
+  </div>
+</div>
+<script>
+  function w3_open() {
+    document.getElementById("main").style.marginLeft = "25%";
+    document.getElementById("mySidebar").style.width = "25%";
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("openNav").style.opacity = 0;
+  }
+
+  function w3_close() {
+    document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("openNav").style.opacity = 100;
+  }
+</script>
 </body>
 </html>
