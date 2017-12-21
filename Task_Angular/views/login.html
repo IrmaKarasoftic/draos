@@ -1,17 +1,18 @@
-﻿<div class="login">
-    <form>
-        <div class="LoginInput">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="username" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
-            </div>
-            <div style="text-align:center">
-                <button type="submit" class="btn btn-default">Submit</button>
-            </div>
+﻿<div style="width:40%; margin:auto">
+    <h2 style="text-align: center">Login</h2>
+    <form name="form" ng-submit="vm.login()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" ng-model="login.username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="login.password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        <div class="form-actions" align="center">
+            <button type="submit" ng-disabled="form.$invalid || login.dataLoading" ng-click="checkLogin()" class="btn btn-primary login-btn">Login</button>
         </div>
     </form>
 </div>

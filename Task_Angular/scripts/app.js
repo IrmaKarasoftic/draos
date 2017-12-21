@@ -4,7 +4,10 @@
         taskAngular.config(function ($routeProvider) {
 
             $routeProvider
-                .when("/home", {
+                .when("/login", {
+                    templateUrl: "views/login.html",
+                    controller: "loginController"
+                }).when("/home", {
                     templateUrl: "views/home.html",
                     controller: "homeController"
                 })

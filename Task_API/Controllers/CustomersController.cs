@@ -23,9 +23,9 @@ namespace Task_API.Controllers
                 if (customers != null) return Ok(customers);
                 return NotFound();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
         }
 
