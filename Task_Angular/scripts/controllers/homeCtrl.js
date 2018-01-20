@@ -5,11 +5,11 @@
         $scope.showIncome = false;
         $scope.graphData = [];
         $scope.loadIncomes = function () {
-            $scope.getDataForYear(2013);
             $scope.getDataForYear(2014);
             $scope.getDataForYear(2015);
             $scope.getDataForYear(2016);
             $scope.getDataForYear(2017);
+            $scope.getDataForYear(2018);
             $scope.configureChart();
         };
         $scope.getDataForYear = function (year) {

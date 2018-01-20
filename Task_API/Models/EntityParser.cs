@@ -56,6 +56,7 @@ namespace Task_API.Models
             };
             if (model.CompanyImageUrl == null)
                 model.CompanyImageUrl ="http://waters-company.com/wp-content/themes/watersconsulting_wp_theme/images/city_scape5b.jpg";
+            companyEntity.CompanyUrl = model.CompanyImageUrl;
             return companyEntity;
         }
 
