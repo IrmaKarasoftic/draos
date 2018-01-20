@@ -532,6 +532,8 @@ display: block;
     background: center center no-repeat;
     background-size:contain;
     border-radius: 25%;
+
+    
 }
 
 .company-image {
@@ -553,9 +555,19 @@ display: block;
 .user-rightColumn {
     width: 45%;
     float: right;
-    display: inline-block
+    display: inline-block;
 }
-
+.user-rightColumn img {
+    width: 99%;
+}
 .login-btn {
     background-color: #009688 !important;
 }
+.fa-pencil-square-o {
+    color: white;
+}
+
+.fa-times {
+    color: white;
+}
+

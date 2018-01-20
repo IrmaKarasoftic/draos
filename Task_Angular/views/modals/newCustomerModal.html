@@ -24,11 +24,11 @@
           
           <div class="user-rightColumn">
             <!--<img class="profile-image" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKxhvXretRUKf5xLeaRJtuki-UcPJyCZ5JWHgASsTtjHHIA2Q' alt=""/>-->
-            <img class="profile-image" src="{{requestedCustomer.userImageUrl}}" alt=""/>
+            <img class="profile-image" src="{{newCustomer.customerImageUrl}}" alt=""/>
             <br />
             <hr/>
             <label for="imageUrl">Profile image Url:</label>
-            <input type="text" name="name" class="form-control" id="imageUrl" value="{{requestedCustomer.userImageUrl}}" ng-model="editCustomer.userImageUrl"/>
+            <input type="text" name="name" class="form-control" id="imageUrl" ng-model="newCustomer.customerImageUrl"/>
           </div>
         </form>
     </div><!--end modal body-->

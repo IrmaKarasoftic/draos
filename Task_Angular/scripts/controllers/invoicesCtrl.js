@@ -366,6 +366,7 @@
                 $scope.newInvoice.customer !== null &&
                 $scope.itemList.length >= 1) {
                 //Generate invoice
+                $scope.newInvoice.items = $scope.itemList;
                 dataService.create("invoices", $scope.newInvoice, function (data) {
                     //get invoice ID
                     if (data) {
@@ -407,6 +408,17 @@
             }
             else {
                 notificationsConfig.error("All fields must be filled in.");
+            }
+            $scope.newInvoice = {
+                "id": 0,
+                "date": "",
+                "items": [],
+                "status": "Issued",
+                "customer": null,
+                "customerName": "",
+                "billTo": null,
+                "shipTo": null,
+                "isDeleted": false
             }
         }
 
@@ -466,6 +478,17 @@
             $scope.calculateFinal();
             $('#newInvoiceModal').modal('toggle');
             $scope.loadInvoicesInfo();
+            $scope.newInvoice = {
+                "id": 0,
+                "date": "",
+                "items": [],
+                "status": "Issued",
+                "customer": null,
+                "customerName": "",
+                "billTo": null,
+                "shipTo": null,
+                "isDeleted": false
+            }
         }
 
         $scope.cancelEditDraftInvoice = function () {

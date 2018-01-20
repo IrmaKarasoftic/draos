@@ -69,8 +69,9 @@ namespace Task_API.Models
                 Company = context.Companies.Find(model.Company),
                 IsDeleted = model.IsDeleted,
             };
-            if (model.CustomerImageUrl == null)
-                model.CustomerImageUrl = "https://www.atomix.com.au/media/2015/06/atomix_user31.png";
+            if (string.IsNullOrEmpty(model.CustomerImageUrl))
+                customer.UserImageUrl = "https://www.atomix.com.au/media/2015/06/atomix_user31.png";
+            else customer.UserImageUrl = model.CustomerImageUrl;
             return customer;
         }
     }

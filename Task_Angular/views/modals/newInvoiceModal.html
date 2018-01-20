@@ -13,10 +13,10 @@
                     <br />
                     CustomerID:
                     <input type="number" class="form-control" ng-model="newInvoice.customer" placeholder="#" readonly>
-                    <select ng-model="guestCustomer"
+                    <select ng-model="newInvoice.guestCustomer"
                             class="form-control"
                             ng-options="customer.name for customer in customers"
-                            ng-change="newSetCustomerID(guestCustomer)">
+                            ng-change="newSetCustomerID(newInvoice.guestCustomer)">
                         <option value="" disabled selected>- Select Customer -</option>
                     </select>
                 </div>
@@ -38,9 +38,9 @@
                     <div class="row">
                         <div class="col-md-8">
                             <select class="form-control"
-                                    ng-model="billToCustomer"
+                                    ng-model="newInvoice.billToCustomer"
                                     ng-options="customer.name for customer in customers"
-                                    ng-change="newSetBillTo(billToCustomer)">
+                                    ng-change="newSetBillTo(newInvoice.billToCustomer)">
                                 <option value="" disabled selected>- Select Customer -</option>
                             </select>
                         </div><!--end col-md-8-->
@@ -59,10 +59,10 @@
                     </div><!--end panel-->
                     <div class="row">
                         <div class="col-md-8">
-                            <select ng-model="shipToCustomer"
+                            <select ng-model="newInvoice.shipToCustomer"
                                     class="form-control"
                                     ng-options="customer.name for customer in customers"
-                                    ng-change="newSetShipTo(shipToCustomer)">
+                                    ng-change="newSetShipTo(newInvoice.shipToCustomer)">
                                 <option value="" disabled selected>- Select Customer -</option>
                             </select>
                         </div><!--end col-md-8-->
@@ -72,14 +72,14 @@
                 <h2>Ordered Items</h2>
                 <div class="row">
                     <div class="col-md-5">
-                        <select ng-model="selectedItem"
+                        <select ng-model="newInvoice.selectedItem"
                                 class="form-control"
                                 ng-options="item.description for item in items">
                             <option value="" disabled selected>- Select Item -</option>
                         </select>
                     </div>
                     <button class="btn btn-primary"
-                            ng-click="pushToItemList(selectedItem)">
+                            ng-click="pushToItemList(newInvoice.selectedItem)">
                         Add
                     </button>
                 </div>
