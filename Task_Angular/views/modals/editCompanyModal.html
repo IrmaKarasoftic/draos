@@ -1,46 +1,62 @@
 ﻿<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header bg-info">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h2 class="modal-title">Company: {{requestedCompany.name}}</h2>
-        </div><!--end modal header-->
+  <div class="modal-content">
+    <div class="modal-header bg-info">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h2 class="modal-title">Company: {{requestedCompany.name}}</h2>
+    </div><!--end modal header-->
 
-        <div class="modal-body">
-            <div class="container-fluid">
-                <div class="row">
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="row">
 
-                    <div class="col-md-4">
-                        <h2>XYZ<br /><small>Edit company information</small></h2>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ">
-                    <div class="panel panel-info">
-                        <div class="panel-body">
-                            <p>Company ID: </p>
-                            <input type="text" class="form-control" id="disabledInput" disabled="" value="{{requestedCompany.id}}" ng-model="editCompany.id"/>
-                            <p>Company Name: </p>
-                            <input type="text"  class="form-control" id="inputDefault" value="{{requestedCompany.name}}" ng-model="editCompany.name" />
-                            
-                            <p>Street address: </p>
-                            <input type="text" class="form-control" id="inputDefault" value="{{requestedCompany.streetAddress}}" ng-model="editCompany.streetAddress" />
-                            <p>Zip code: </p>
-                            <input type="number" min="10000" max="99999"  class="form-control" id="inputDefault" value="{{requestedCompany.zipCode}}" ng-model="editCompany.zipCode" />
-                            <p>City: </p>
-                            <input type="text" class="form-control" id="inputDefault" value="{{requestedCompany.city}}" ng-model="editCompany.city" />
-                            <p>Phone number: </p>
-                            <input type="text" class="form-control" id="inputDefault" value="{{requestedCompany.phoneNumber}}" ng-model="editCompany.phoneNumber" />
-                            <p>Company image URL</p>
-                            <input type="text" class="form-control" value="{{requestedCompany.phoneNumber}}" ng-model="requestedCompany.companyUrl" />
-                        </div>
-                    </div>
-                </div>
+          <div class="col-md-4">
+            <h2>XYZ<br /><small>Edit company information</small></h2>
+          </div>
+        </div>
+        <form>
+          <div class="user-leftColumn">
+            <br /><br />
+            <div class="form-group">
+              <label for="name">Company Name: </label>
+              <input type="text" name="name" class="form-control" id="name" value="{{requestedCompany.name}}" ng-model="editCompany.name" />
             </div>
-        </div><!--end modal body-->
-        <div class="modal-footer bg-info">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateCompany()">Save</button>
-            <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
 
-        </div><!--end modal footer-->
-    </div><!--end modal content-->
+            <div class="form-group">
+              <label for="adress">Street address: </label>
+              <input type="text" name="adress" class="form-control" id="name" value="{{requestedCompany.streetAddress}}" ng-model="editCompany.streetAddress" />
+            </div>
+
+            <div class="form-group">
+              <label for="zip">Zip code:  </label>
+              <input type="text" name="zip" class="form-control" id="name" value="{{requestedCompany.zipCode}}" ng-model="editCompany.zipCode" />
+            </div>
+
+            <div class="form-group">
+              <label for="city">City: </label>
+              <input type="text" name="name" class="form-control" id="city" value="{{requestedCompany.city}}" ng-model="editCompany.city" />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone number: </label>
+              <input type="text" name="phone" class="form-control" id="city" value="{{requestedCompany.phoneNumber}}" ng-model="editCompany.phoneNumber" />
+            </div>
+          </div>
+
+          <div class="user-rightColumn">
+            <img class="profile-image" src="{{requestedCompany.companyUrl}}" alt="" />
+            <br />
+            <hr />
+            <label for="imageUrl">Profile image Url:</label>
+            <input type="text" name="name" class="form-control" id="imageUrl" value="{{requestedCompany.companyUrl}}" ng-model="requestedCompany.companyUrl" />
+          </div>
+
+        </form>
+      </div>
+    </div><!--end modal body-->
+    <div class="modal-footer bg-info">
+      <button type="button" ng-disabled="checkValidity(requestedCompany)" class="btn btn-primary" data-dismiss="modal" ng-click="updateCompany()">Save</button>
+      <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+
+    </div><!--end modal footer-->
+  </div><!--end modal content-->
 </div><!--end modal dialog-->

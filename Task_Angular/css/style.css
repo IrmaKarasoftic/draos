@@ -274,7 +274,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top {
 .companycontainer {
     position: relative;
     display: inline-block;
-    width: 31%;
+    width: 29%;
     height: 250px;
 
     margin: 4px 50px 4px 10px;
@@ -536,9 +536,32 @@ display: block;
     
 }
 
-.company-image {
-    width: 350px;
-    height: 250px;
+.user-leftColumn {
+    width: 45%;
+    float: left;
+}
+
+.user-rightColumn {
+    width: 45%;
+    float: right;
+}
+.user-rightColumn img {
+    width: 99%;
+}
+
+.company-leftColumn {
+    width: 45%;
+    float: left;
+}
+
+.company-rightColumn {
+    width: 45%;
+    float: right;
+}
+
+.company-rightColumn .company-image {
+    border: 1px solid #ddd;
+    width: 450px;
     border-radius: 25%;
     margin-left: 100px;
     background-repeat: no-repeat;
@@ -546,28 +569,14 @@ display: block;
     background-size: cover;
 }
 
-.user-leftColumn {
-    width: 45%;
-    float: left;
-    display:inline-block
-}
-
-.user-rightColumn {
-    width: 45%;
-    float: right;
-    display: inline-block;
-}
-.user-rightColumn img {
-    width: 99%;
-}
 .login-btn {
     background-color: #009688 !important;
 }
-.fa-pencil-square-o {
+.companycontainer .fa-pencil-square-o {
     color: white;
 }
 
-.fa-times {
+.companycontainer .fa-times {
     color: white;
 }
 

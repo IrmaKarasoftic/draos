@@ -12,7 +12,7 @@
                     $scope.waitCompanies = false;
                 }
                 else {
-                    alert("error");
+                    notificationsConfig.error("Adding companies failed!");
                 }
             })
         };
@@ -69,6 +69,7 @@
                 dataService.create("companies", $scope.newCompany, function (data) {
                     if (data) {
                         notificationsConfig.success("Company added");
+                        location.reload();
                     }
                     else
                         notificationsConfig.error("Adding companies failed!");
@@ -83,20 +84,16 @@
 
 
         $scope.updateCompany = function () {
-            if ($scope.newCompany.name !== "" &&
-                $scope.newCompany.streetAddress !== "" &&
-                $scope.newCompany.city !== "" &&
-                $scope.newCompany.zipCode !== null &&
-                $scope.newCompany.phoneNumber !== null
+            if ($scope.editCompany.name !== "" &&
+                $scope.editCompany.streetAddress !== "" &&
+                $scope.editCompany.city !== "" &&
+                $scope.editCompany.zipCode !== null &&
+                $scope.editCompany.phoneNumber !== null
                 ) {
-                $scope.validation();
-                if ($scope.incorrect) {
-                    $scope.incorrect = false;
-                    return;
-                }
                 dataService.update("companies", $scope.editCompany.id, $scope.editCompany, function (data) {
                     $scope.loadCompaniesInfo();
                     if (data) {
+                        location.reload();
                         notificationsConfig.success("Company updated");
                     }
                     else {
@@ -133,7 +130,18 @@
         $scope.CompanyCheckRemove = function (company) {
             return $scope.removeOnId === company.id;
         }
-
+        $scope.checkValidity = function(company) {
+            return company.name === '' ||
+                company.streetAddress === '' ||
+                company.zipCode === '' ||
+                company.city === '' ||
+                company.phoneNumber === '' ||
+                company.name === null ||
+                company.streetAddress === null ||
+                company.zipCode === null ||
+                company.city === null ||
+                company.phoneNumber === null;
+        }
         $scope.loadCompaniesInfo();
 
 

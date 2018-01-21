@@ -76,7 +76,7 @@ namespace Task_API.Models
                 PhoneNumber = company.phoneNumber,
                 ZipCode = company.zipCode,
                 IsDeleted = company.IsDeleted,
-                CompanyImageUrl = company.CompanyUrl
+                CompanyUrl = company.CompanyUrl
             };
         }
 

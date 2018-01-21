@@ -1,8 +1,19 @@
 ﻿<div ng-show="!waitCustomers">
-    <h2><i class="fa fa-users"></i>  Customers Management</h2>
-    <div class="pull-right"><a class="btn btn-primary" data-toggle="modal" data-target="#newCustomerModal" ng-click="loadCompaniesInfo()"><strong>New Customer</strong></a></div>
-    <br /><br />
-    <table class="table table-striped" align="right">
+  <div class="row">
+    <div class="col-md-6">
+
+      <h2><i class="fa fa-building"></i> Companies Management</h2>
+    </div>
+    <div class="col-md-6">
+      <br />
+      <a class="btn btn-primary pull-right" data-toggle="modal" data-target="#newCustomerModal" ng-click="loadCompaniesInfo()"><strong>New Customer</strong></a>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  
+  <table class="table table-striped" align="right">
         <thead>
             <tr>
                 <th class="col-md-1" style="text-align:center"><h4>ID</h4></th>

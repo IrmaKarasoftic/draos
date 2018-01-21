@@ -1,6 +1,6 @@
 ﻿<div>
   <ng-form class="panel-body" #id="newCompany">
-    <div class="user-leftColumn" style="width: 45%">
+    <div class="company-leftColumn" style="width: 45%">
       <p>Name: </p>
       <input type="text" class="form-control" ng-model="newCompany.name" />
       <p>Street address: </p>
@@ -12,7 +12,7 @@
       <p>Phone number: </p>
       <input type="text" class="form-control" ng-model="newCompany.phoneNumber"/>
     </div>
-    <div class="user-rightColumn" style="width: 45%;">
+    <div class="company-rightColumn" style="width: 45%;">
       <p>Company image URL</p>
       <input type="text" class="form-control" ng-model="newCompany.companyUrl"/>
       <br />
@@ -24,6 +24,6 @@
   </ng-form>  
 </div>
 <div class="newCompanyButtons">
-    <a href="#/companies" class="btn btn-primary" ng-click="createNewCompany()">Save</a>
+    <a href="#/companies" class="btn btn-primary" ng-disabled="checkValidity(newCompany)" ng-click="createNewCompany()">Save</a>
     <a href="#/companies" class="btn btn-default">Cancel</a>
 </div>

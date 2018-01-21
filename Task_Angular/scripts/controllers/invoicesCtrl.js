@@ -30,7 +30,7 @@
                 if (data) {
                     $scope.invoices = data;
                 } else {
-                    notificationsConfig.success("error");
+                    notificationsConfig.error("error");
                 }
             });
         };

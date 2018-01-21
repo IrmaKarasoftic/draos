@@ -1,39 +1,50 @@
-﻿<h2><i class="fa fa-building"></i>  Companies Management</h2>
-<br />
-<a class="btn btn-primary" pull-right href="#/newCompany"><strong>Add Company</strong></a>
+﻿<div class="row">
+  <div class="col-md-6">
 
-<div ng-show="!waitCompanies">
-  <div class="companies">
-    <div class="companycontainer" ng-repeat="company in companies">
-        <img src="{{company.companyImageUrl}}" alt="" />
-        <p class="companytitle">{{company.name}}</p>
-      <div class="companyoverlay"></div>
-
-      <div class="companybutton" style="float: left"><a href="" ng-hide="CompanyCheckRemove(company)"  data-toggle="modal" data-target="#editCompanyModal" ng-click="companyTransfer(company)"><i class="fa fa-pencil-square-o"></i></a></div>
-      <div class="companybutton" style="float: right"><a href="" ng-hide="CompanyCheckRemove(company)" ng-click="CompanyRemoveOn(company)"><i class="fa fa-times"></i></a></div>
-      <div class="companybutton" style="float: left"><a style="background-color: red" href="" ng-show="CompanyCheckRemove(company)" ng-click="removeCompany()"><strong>Remove</strong></a></div>
-      <div class="companybutton" style="float: right"><a href="" ng-show="CompanyCheckRemove(company)" ng-click="CompanyRemoveOff()"><strong>Cancel</strong></a></div>
-     
-    </div>
+    <h2><i class="fa fa-building"></i> Companies Management</h2>
+  </div>
+  <div class="col-md-6">
+    <br/>
+    <a class="btn btn-primary pull-right" href="#/newCompany"><strong>Add Company</strong></a>
   </div>
 </div>
-<div ng-show="waitCompanies">
-  <div class="loader">
-    <div class="loader-inner">
-      <div class="loader-line-wrap">
-        <div class="loader-line"></div>
+<br />
+<br />
+<br />
+<div class="row">
+  <div ng-show="!waitCompanies">
+    <div class="companies">
+      <div class="companycontainer" ng-repeat="company in companies">
+        <img src="{{company.companyUrl}}" alt="" />
+        <p class="companytitle">{{company.name}}</p>
+        <div class="companyoverlay"></div>
+
+        <div class="companybutton" style="float: left"><a href="" ng-hide="CompanyCheckRemove(company)" data-toggle="modal" data-target="#editCompanyModal" ng-click="companyTransfer(company)"><i class="fa fa-pencil-square-o"></i></a></div>
+        <div class="companybutton" style="float: right"><a href="" ng-hide="CompanyCheckRemove(company)" ng-click="CompanyRemoveOn(company)"><i class="fa fa-times"></i></a></div>
+        <div class="companybutton" style="float: left"><a style="background-color: red" href="" ng-show="CompanyCheckRemove(company)" ng-click="removeCompany()"><strong>Remove</strong></a></div>
+        <div class="companybutton" style="float: right"><a href="" ng-show="CompanyCheckRemove(company)" ng-click="CompanyRemoveOff()"><strong>Cancel</strong></a></div>
+
       </div>
-      <div class="loader-line-wrap">
-        <div class="loader-line"></div>
-      </div>
-      <div class="loader-line-wrap">
-        <div class="loader-line"></div>
-      </div>
-      <div class="loader-line-wrap">
-        <div class="loader-line"></div>
-      </div>
-      <div class="loader-line-wrap">
-        <div class="loader-line"></div>
+    </div>
+  </div>
+  <div ng-show="waitCompanies">
+    <div class="loader">
+      <div class="loader-inner">
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
       </div>
     </div>
   </div>

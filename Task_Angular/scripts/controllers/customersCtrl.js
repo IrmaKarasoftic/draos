@@ -106,6 +106,13 @@
             return $scope.removeOnId === customer.id;
         }
 
+        $scope.checkValidity = function (user) {
+            return user.name === '' ||
+                user.name === null ||
+                user.company === null ||
+                user.company === 0;
+        }
+
         $scope.loadCustomersInfo();
 
 
