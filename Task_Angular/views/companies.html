@@ -13,9 +13,12 @@
 <br />
 <div class="row">
   <div ng-show="!waitCompanies">
-    <div class="companies">
+    <div style="text-align: center" ng-show="companies.length <= 0">
+      <h4>There are no companies.</h4>
+    </div>
+    <div class="companies"  ng-show="companies.length > 0">
       <div class="companycontainer" ng-repeat="company in companies">
-        <img src="{{company.companyUrl}}" alt="" />
+        <img src="{{company.companyUrl}}" alt=""/>
         <p class="companytitle">{{company.name}}</p>
         <div class="companyoverlay"></div>
 

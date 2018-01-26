@@ -1,51 +1,61 @@
 ﻿<div>
-    <h2><i class="fa fa-wpforms"></i>  Invoices Management</h2>
-    <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#newInvoiceModal" ng-click="startNewInvoice()"><strong>New Invoice</strong></button>
+  <h2><i class="fa fa-wpforms"></i>  Invoices Management</h2>
+  <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#newInvoiceModal" ng-click="startNewInvoice()"><strong>New Invoice</strong></button>
+  <br />
+  <br />
+  <br />
+  <br />
+  <div style="text-align: center" ng-show="invoices.length <= 0">
+    <h4>There are no invoices.</h4>
+  </div>
+  <div ng-show="invoices.length > 0">
     <table class="table table-hover">
-        <thead>
-            <tr>
-                <th class="col-md-2"><h4>DATE</h4></th>
-                <th class="col-md-4"><h4>CUSTOMER NAME</h4></th>
-                <th class="col-md-2 text-right"><h4>STATUS</h4></th>
-                <th class="col-md-2"><h4></h4></th>
-                <th class="col-md-2"><h4>ACTIONS</h4></th>
-            </tr>
-        </thead>
+      <thead>
+        <tr>
+          <th class="col-md-2"><h4>DATE</h4></th>
+          <th class="col-md-4"><h4>CUSTOMER NAME</h4></th>
+          <th class="col-md-2 text-right"><h4>STATUS</h4></th>
+          <th class="col-md-2"><h4></h4></th>
+          <th class="col-md-2"><h4>ACTIONS</h4></th>
+        </tr>
+      </thead>
       <tbody>
-      
-      <tr ng-repeat="invoice in invoices | orderBy:'-date'">
-        <td class="col-md-2">{{invoice.date | date: 'mediumDate'}}</td>
-        <td class="col-md-2">{{invoice.name}}</td>
-        <td ng-hide="checkEdit(invoice)" class="col-md-2 text-right">{{invoice.status}}</td>
-        
-        <td ng-show="checkEdit(invoice)">
-          <select class="form-control"
-                  ng-model="requestedInvoice.status"
-                  ng-options="statusType.value as statusType.name for statusType in statusTypes">
-            <option value="" disabled selected>- Select Status -</option>
-          </select>
-        </td>
-        <td>
-          <button ng-hide="checkActions(invoice) || checkDraft(invoice)" class="btn btn-default btn-sm" ng-click="editOn(invoice)"><i class="fa fa-pencil-square-o"></i></button>
-          <button ng-hide="checkActions(invoice) || !checkDraft(invoice)" class="btn btn-default btn-sm" data-toggle="modal" data-target="#editInvoiceModal" ng-click="editDraftInvoice(invoice)"><i class="fa fa-pencil-square-o"></i></button>
-        </td>
-        <!--end on edit-->
-        <td class="col-md-2">
-          <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" data-toggle="modal" data-target="#viewInvoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-eye"></i></button>
 
-          <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" ng-click="removeOn(invoice)"><i class="fa fa-times"></i></button>
-          <!--on edit-->
-          <button ng-show="checkEdit(invoice)" class="btn btn-default" ng-click="editOff()"><strong>Cancel</strong></button>
-          <button ng-show="checkEdit(invoice)" class="btn btn-success" ng-click="updateInvoice()"><strong>Submit</strong></button>
+        <tr ng-repeat="invoice in invoices | orderBy:'-date'">
+          <td class="col-md-2">{{invoice.date | date: 'mediumDate'}}</td>
+          <td class="col-md-2">{{invoice.name}}</td>
+          <td ng-hide="checkEdit(invoice)" class="col-md-2 text-right">{{invoice.status}}</td>
+
+          <td ng-show="checkEdit(invoice)">
+            <select class="form-control"
+                    ng-model="requestedInvoice.status"
+                    ng-options="statusType.value as statusType.name for statusType in statusTypes">
+              <option value="" disabled selected>- Select Status -</option>
+            </select>
+          </td>
+          <td>
+            <button ng-hide="checkActions(invoice) || checkDraft(invoice) || invoice.status !== 'Issued'" class="btn btn-default btn-sm" ng-click="editOn(invoice)"><i class="fa fa-pencil-square-o"></i></button>
+            <button ng-hide="checkActions(invoice) || !checkDraft(invoice)  || invoice.status !== 'Issued'" class="btn btn-default btn-sm" data-toggle="modal" data-target="#editInvoiceModal" ng-click="editDraftInvoice(invoice)"><i class="fa fa-pencil-square-o"></i></button>
+          </td>
           <!--end on edit-->
-          <!--on remove-->
-          <button ng-show="checkRemove(invoice)" class="btn btn-default" ng-click="removeOff()"><strong>Cancel</strong></button>
-          <button ng-show="checkRemove(invoice)" class="btn btn-danger" ng-click="removeInvoice()"><strong>Remove</strong></button>
-          <!--end on remove-->
-        </td>
-      </tr>
+          <td class="col-md-2">
+            <button ng-hide="checkActions(invoice)" class="btn btn-default btn-sm" data-toggle="modal" data-target="#viewInvoiceModal" ng-click="invoiceTransfer(invoice)"><i class="fa fa-eye"></i></button>
+
+            <button ng-hide="checkActions(invoice) || invoice.status !== 'Issued'" class="btn btn-default btn-sm" ng-click="removeOn(invoice)"><i class="fa fa-times"></i></button>
+            <!--on edit-->
+            <button ng-show="checkEdit(invoice)" class="btn btn-default" ng-click="editOff()"><strong>Cancel</strong></button>
+            <button ng-show="checkEdit(invoice)" class="btn btn-success" ng-click="updateInvoice()"><strong>Submit</strong></button>
+            <!--end on edit-->
+            <!--on remove-->
+            <button ng-show="checkRemove(invoice)" class="btn btn-default" ng-click="removeOff()"><strong>Cancel</strong></button>
+            <button ng-show="checkRemove(invoice)" class="btn btn-danger" ng-click="removeInvoice()"><strong>Remove</strong></button>
+            <!--end on remove-->
+          </td>
+        </tr>
       </tbody>
     </table>
+  </div>
+
 </div>
 <!-- Invoice Modal -->
 <div class="modal fade" id="viewInvoiceModal" role="dialog">

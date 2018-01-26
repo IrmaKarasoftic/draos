@@ -54,7 +54,7 @@
       </div>
     </div><!--end modal body-->
     <div class="modal-footer bg-info">
-      <button type="button" ng-disabled="checkValidity(requestedCompany)" class="btn btn-primary" data-dismiss="modal" ng-click="updateCompany()">Save</button>
+      <button type="button" data-dismiss="modal" ng-disabled="isInvalid(editCompany)" class="btn btn-primary" ng-click="updateCompany()">Save</button>
       <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
 
     </div><!--end modal footer-->

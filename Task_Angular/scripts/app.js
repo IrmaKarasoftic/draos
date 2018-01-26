@@ -35,7 +35,7 @@
                     templateUrl: "views/newCompany.html",
                     controller: "companiesController"
                 })
-                .otherwise({ redirectTo: "/home" });
+                .otherwise({ redirectTo: "/login" });
         })
     /*
     .run(function ($rootScope, $location) {

@@ -24,7 +24,7 @@
                     templateUrl: "views/companies.html",
                     controller: "companiesController"
                 })
-                .otherwise({ redirectTo: "/home" });
+                .otherwise({ redirectTo: "/login" });
         })
     
 }());

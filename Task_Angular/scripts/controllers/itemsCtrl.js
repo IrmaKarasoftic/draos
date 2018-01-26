@@ -30,11 +30,18 @@
         $scope.validation = function () {
             if ($scope.newItem === null ||
                 $scope.newItem.description === "" ||
+                $scope.newItem.description === undefined ||
                 $scope.newItem.quantity === 0 ||
                 $scope.newItem.unitPrice === 0 ||
-                typeof $scope.newItem.quantity !== "number" ||
+                $scope.newItem.quantity === null ||
+                $scope.newItem.unitPrice === null) {
+                    notificationsConfig.error("All inputs must be filled in");
+                    $scope.incorrect = true;
+                    return;
+            }
+            if (typeof $scope.newItem.quantity !== "number" ||
                 typeof $scope.newItem.unitPrice !== "number") {
-                alert("Incorrect input");
+                notificationsConfig.error("Quantity and unit price must be numbers");
                 $scope.incorrect = true;
                 return;
             }

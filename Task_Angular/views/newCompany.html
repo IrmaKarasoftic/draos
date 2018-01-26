@@ -24,6 +24,6 @@
   </ng-form>  
 </div>
 <div class="newCompanyButtons">
-    <a href="#/companies" class="btn btn-primary" ng-disabled="checkValidity(newCompany)" ng-click="createNewCompany()">Save</a>
-    <a href="#/companies" class="btn btn-default">Cancel</a>
+    <a class="btn btn-primary" ng-disabled="isInvalid(newCompany)" ng-click="createNewCompany()">Save</a>
+    <a class="btn btn-default">Cancel</a>
 </div>

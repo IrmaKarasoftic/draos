@@ -12,7 +12,6 @@
                     Date: {{newInvoice.date | date: medium-date}}
                     <br />
                     CustomerID:
-                    <input type="number" class="form-control" ng-model="newInvoice.customer" placeholder="#" readonly>
                     <select ng-model="newInvoice.guestCustomer"
                             class="form-control"
                             ng-options="customer.name for customer in customers"

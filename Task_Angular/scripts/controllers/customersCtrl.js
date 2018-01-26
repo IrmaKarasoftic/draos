@@ -1,9 +1,13 @@
 ﻿(function () {
     var taskAngular = angular.module('taskAngular');
 
-    taskAngular.controller('customersController', function ($scope, dataService) {
+    taskAngular.controller('customersController', function ($scope, dataService, $location) {
         $scope.removeOnId;
-
+        $scope.newCustomer = {
+            id: null,
+            name: "",
+            company: null
+        }
         $scope.loadCustomersInfo = function () {
             $scope.waitCustomers = true;
             dataService.list("customers", function (data) {
@@ -30,11 +34,7 @@
             $scope.editCustomer = $.extend(true, {}, customer);
         };
 
-        $scope.newCustomer = {
-            id: null,
-            name: "",
-            company: null
-        }
+        
         $scope.charsAndNumbers = "^[a-zA-Z0-9]*$";
 
         $scope.cancelCustomer = function () {
@@ -51,25 +51,24 @@
                 notificationsConfig.error("All fields must be filled in!");
                 return;
             }
-            dataService.create("customers", $scope.newCustomer, function (data) {
-                $scope.loadCustomersInfo();
-                if (data) {
-                    notificationsConfig.success("Customer added");
-                }
-                else notificationsConfig.error("Adding customers failed!");
-            })
+            dataService.create("customers",
+                $scope.newCustomer, function(data) {
+                    $scope.loadCustomersInfo();
+                    if (data) {
+                        location.reload();
+                        notificationsConfig.success("Customer added");
+                    } else notificationsConfig.error("Adding customers failed!");
+                });
             $scope.cancelCustomer();
         }
 
 
         $scope.updateCustomer = function () {
-            if ($scope.newCustomer.name === "" ||
-    $scope.newCustomer.company === null) {
+            if ($scope.editCustomer.name === "" || $scope.editCustomer.company === null) {
                 notificationsConfig.error("All fields must be filled in!");
                 return;
             }
             dataService.update("customers", $scope.editCustomer.id, $scope.editCustomer, function (data) {
-                $scope.loadCustomersInfo();
                 if (data) {
                     notificationsConfig.success("Customer updated");
                 }
@@ -82,15 +81,15 @@
 
         $scope.removeCustomer = function () {
             $scope.newCustomer.isDeleted = true;
-            dataService.update("customers", $scope.newCustomer.id, $scope.newCustomer, function (data) {
-                $scope.loadCustomersInfo();
-                if (data) {
-                    notificationsConfig.success("Customer deleted");
-                }
-                else {
-                    notificationsConfig.success("Customer delete failed");
-                }
-            })
+            dataService.update("customers", $scope.newCustomer.id, $scope.newCustomer,
+                function(data) {
+                    $scope.loadCustomersInfo();
+                    if (data) {
+                        notificationsConfig.success("Customer deleted");
+                    } else {
+                        notificationsConfig.success("Customer delete failed");
+                    }
+                });
         }
 
 
@@ -107,7 +106,9 @@
         }
 
         $scope.checkValidity = function (user) {
-            return user.name === '' ||
+            return user === undefined ||
+                user === null ||
+                user.name === '' ||
                 user.name === null ||
                 user.company === null ||
                 user.company === 0;
