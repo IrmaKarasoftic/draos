@@ -28,9 +28,11 @@ namespace Task_API.Helpers
             if (model.BillTo == null)
             {
                 invoice.BillTo = context.Customers.Find(model.ShipTo.Id);
+                invoice.ShipTo = context.Customers.Find(model.ShipTo.Id);
             }
             else if (model.ShipTo == null)
             {
+                invoice.BillTo = context.Customers.Find(model.BillTo.Id);
                 invoice.ShipTo = context.Customers.Find(model.BillTo.Id);
             }
             else

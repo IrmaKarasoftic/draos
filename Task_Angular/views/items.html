@@ -8,10 +8,10 @@
 <br />
 <br />
 <br />
-<div style="text-align: center" ng-show="items.length <= 0">
+<div style="text-align: center" ng-show="items.length <= 0 && !newItemRow">
   <h4>There are no items.</h4>
 </div>
-<div ng-show="items.length > 0">
+<div ng-show="items.length > 0 || newItemRow">
   <table class="table table-hover">
     <thead>
       <tr>

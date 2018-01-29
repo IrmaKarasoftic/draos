@@ -54,9 +54,7 @@ namespace Task_API.Models
                 zipCode = model.ZipCode,
                 IsDeleted = model.IsDeleted,
             };
-            if (model.CompanyUrl == null)
-                companyEntity.CompanyUrl ="http://waters-company.com/wp-content/themes/watersconsulting_wp_theme/images/city_scape5b.jpg";
-            else companyEntity.CompanyUrl = model.CompanyUrl;
+            companyEntity.CompanyUrl = string.IsNullOrEmpty(model.CompanyUrl) ? "http://waters-company.com/wp-content/themes/watersconsulting_wp_theme/images/city_scape5b.jpg" : model.CompanyUrl;
             return companyEntity;
         }
 
@@ -69,9 +67,7 @@ namespace Task_API.Models
                 Company = context.Companies.Find(model.Company),
                 IsDeleted = model.IsDeleted,
             };
-            if (string.IsNullOrEmpty(model.CustomerImageUrl))
-                customer.UserImageUrl = "https://www.atomix.com.au/media/2015/06/atomix_user31.png";
-            else customer.UserImageUrl = model.CustomerImageUrl;
+            customer.UserImageUrl = string.IsNullOrEmpty(model.CustomerImageUrl) ? "https://www.atomix.com.au/media/2015/06/atomix_user31.png" : model.CustomerImageUrl;
             return customer;
         }
     }
