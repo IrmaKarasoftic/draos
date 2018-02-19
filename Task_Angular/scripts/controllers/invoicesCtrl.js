@@ -236,11 +236,13 @@
 
         $scope.newSetBillTo = function (customer) {
             $scope.newInvoice.billTo = customer;
+            if ($scope.newInvoice.shipTo === null) $scope.newInvoice.shipTo = customer;
             $scope.billToCustomer = null;
         };
 
         $scope.newSetShipTo = function (customer) {
             $scope.newInvoice.shipTo = customer;
+            if ($scope.newInvoice.billTo === null) $scope.newInvoice.billTo = customer;
             $scope.shipToCustomer = null;
         };
 
