@@ -1,12 +1,9 @@
 ﻿<div class="row">
-  <div class="col-md-6">
-
     <h2><i class="fa fa-building"></i> Companies Management</h2>
-  </div>
-  <div class="col-md-6">
-    <br/>
-    <a class="btn btn-primary pull-right" href="#/newCompany"><strong>Add Company</strong></a>
-  </div>
+  <br />
+  <br />
+  <a class="btn btn-primary pull-right" href="#/newCompany"><strong>Add Company</strong></a>
+  <input type="text" class="form-control" ng-model="searchCompanies.name" id="search-input" placeholder="Search companies..." autocomplete="off" style="width: 30%">
 </div>
 <br />
 <br />
@@ -17,7 +14,7 @@
       <h4>There are no companies.</h4>
     </div>
     <div class="companies"  ng-show="companies.length > 0">
-      <div class="companycontainer" ng-repeat="company in companies">
+      <div class="companycontainer" ng-repeat="company in companies | filter: searchCompanies">
         <img src="{{company.companyUrl}}" alt=""/>
         <p class="companytitle">{{company.name}}</p>
         <div class="companyoverlay"></div>

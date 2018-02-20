@@ -13,7 +13,7 @@
                 $rootScope.checkLogin = function() {
                     if ($scope.login.username === "admin" && $scope.login.password === "admin") {
                         $rootScope.loggedIn = true;
-                        $location.url('/home');
+                        $location.url('/invoices');
                     } else {
                         $rootScope.loggedIn = false;
                         alert("Login failed");

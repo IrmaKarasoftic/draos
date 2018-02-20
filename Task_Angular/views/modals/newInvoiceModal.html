@@ -6,26 +6,16 @@
       <h3 class="modal-title text-center">Shipment Details</h3>
     </div><!--end modal header-->
     <div class="modal-body">
-      <div class="row">
-        <div class="col-md-4">
-          <select ng-model="newInvoice.guestCustomer"
-                  class="form-control"
-                  ng-options="customer.name for customer in customers"
-                  ng-change="newSetCustomerID(newInvoice.guestCustomer)">
-            <option value="" disabled selected>- Select Customer -</option>
-          </select>
-        </div>
-        <br />
-      </div>
-      <h4>
+      <h5>
         Date: {{newInvoice.date | date: medium-date}}
-      </h4>
+      </h5>
       <br />
 
       <div class="row">
         <div class="col-md-6 ">
           <div class="row">
             <div class="col-md-8">
+              <p>Send bill to: </p>
               <select class="form-control"
                       ng-model="newInvoice.billToCustomer"
                       ng-options="customer.name for customer in customers"
@@ -36,7 +26,7 @@
           </div><!--end row-->
           <br />
 
-          <div class="panel panel-info">
+          <div class="panel panel-info" ng-show="newInvoice.billTo">
             <div class="panel-heading"><h3 class="panel-title"><strong>Bill To:</strong></h3></div>
             <div class="panel-body">
               <p><strong>Customer Name: </strong>{{newInvoice.billTo.name}}</p>
@@ -50,6 +40,7 @@
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-8">
+              <p>Send package to: </p>
               <select ng-model="newInvoice.shipToCustomer"
                       class="form-control"
                       ng-options="customer.name for customer in customers"
@@ -60,7 +51,7 @@
           </div><!--end row-->
           <br />
 
-          <div class="panel panel-info">
+          <div class="panel panel-info"  ng-show="newInvoice.shipTo">
             <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
             <div class="panel-body">
               <p><strong>Customer Name: </strong>{{newInvoice.shipTo.name}}</p>
@@ -72,7 +63,7 @@
           </div><!--end panel-->
         </div><!--end col-md-6-->
       </div>
-      <div class="row">
+      <div class="row" ng-show="newInvoice.shipTo">
         <div class="col-md-5">
           <select ng-model="newInvoice.selectedItem"
                   class="form-control"
@@ -86,19 +77,19 @@
         </button>
       </div>
       <br />
-      <div ng-hide="listExists"><hr /><h4 style="text-align: center;">No items selected</h4></div>
+      <div ng-show="!listExists && newInvoice.shipTo "><hr /><h4 style="text-align: center;">No items selected</h4></div>
       
       <div class="row">
         <div class="col-md-12">
           <table class="table table-hover" ng-show="listExists">
             <thead>
               <tr>
-                <th class="col-md-1"><h4>ID</h4></th>
-                <th class="col-md-2"><h4>Description</h4></th>
-                <th class="col-md-2"><h4>Store Qty</h4></th>
-                <th class="col-md-2"><h4>Amount</h4></th>
-                <th class="col-md-2"><h4>Quantity</h4></th>
-                <th class="col-md-2"><h4>Total [$]</h4></th>
+                <th class="col-md-1"><h5>ID</h5></th>
+                <th class="col-md-2"><h5>Description</h5></th>
+                <th class="col-md-2"><h5>Store Qty</h5></th>
+                <th class="col-md-2"><h5>Amount</h5></th>
+                <th class="col-md-2"><h5>Quantity</h5></th>
+                <th class="col-md-2"><h5>Total [$]</h5></th>
                 <th class="col-md-1"></th>
               </tr>
             </thead>
@@ -128,7 +119,7 @@
       <br />
       <br />
 
-      <div class="row">
+      <div class="row" ng-show="newInvoice.shipTo">
         <img src="../../libs/xyz512-logo.png" alt="logo" style="width: 45%; padding-left: 70px; padding-top: 30px;" />
         <div style="width:30%; float:right; font-size:14px">
           <p><strong>Subtotal: {{subTotal | number:2}}$</strong></p>
@@ -141,8 +132,8 @@
 
     </div><!--end modal body-->
     <div class="modal-footer bg-info">
-      <button class="btn btn-primary" ng-click="createNewInvoice()">Submit</button>
       <button class="btn btn-danger" ng-click="cancelNewInvoice()">Cancel</button>
+      <button class="btn btn-primary" ng-click="createNewInvoice()">Submit</button>
     </div><!--end modal footer-->
   </div><!--end modal content-->
 </div><!--end modal dialog-->

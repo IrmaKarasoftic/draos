@@ -10,18 +10,6 @@
                     <h2>General</h2>
                     Date: {{newInvoice.date | date: medium-date}}
                     <br />
-                    CustomerID:
-                    <div class="row">
-                        <div class="col-md-4"><input type="number" class="form-control" ng-model="newInvoice.customer" placeholder="#" readonly></div>
-                        <div class="col-md-8">
-                            <select class="form-control"
-                                    ng-model="guestCustomer"
-                                    ng-options="customer.name for customer in customers"
-                                    ng-change="newSetCustomerID(guestCustomer)">
-                                <option value="" disabled selected>- Select Customer -</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-4">
                     <br />
@@ -62,7 +50,7 @@
                     </div><!--end row-->
                 </div>
                 <div class="col-md-6">
-                    <div class="panel panel-success">
+                    <div class="panel panel-info">
                         <div class="panel-heading"><h3 class="panel-title"><strong>Ship To:</strong></h3></div>
                         <div class="panel-body">
                             <p><strong>Customer Name: </strong>{{newInvoice.shipTo.name}}</p>

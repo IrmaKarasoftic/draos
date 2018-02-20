@@ -18,7 +18,6 @@
         $scope.removeOnId;
 
         $scope.statusTypes = [
-            { name: "Draft", value: 0 },
             { name: "Issued", value: 1 },
             { name: "Paid", value: 2 },
             { name: "Cancelled", value: 3 }
@@ -187,7 +186,7 @@
                 "date": "",
                 "items": [],
                 "status": "Issued",
-                "customer": null,
+                "customer": 1,
                 "customerName": "",
                 "billTo": null,
                 "shipTo": null,
@@ -224,11 +223,7 @@
         $scope.shipTo = false; // select customer button
         $scope.billToCustomer;
         $scope.shipToCustomer;
-
-        //Customer ID for new invoice
-        $scope.newSetCustomerID = function (customer) {
-            $scope.newInvoice.customer = customer.id;
-        }
+        
         //Customer ID for existing invoice
         $scope.editSetCustomerID = function (customer) {
             $scope.requestedInvoice.customer = customer.id;
@@ -369,59 +364,66 @@
                 $scope.itemList.length >= 1) {
                 //Generate invoice
                 $scope.newInvoice.items = $scope.itemList;
-                dataService.create("invoices", $scope.newInvoice, function (data) {
-                    //get invoice ID
-                    if (data) {
-                        $scope.newInvoice.id = data;
-                        //Push all items from itemList to newInvoice
-                        for (var i = 0; i < $scope.itemList.length; i += 1)
-                            $scope.pushItemToNewInvoice(i);
-                        //Generate all items from newInvoice as invoiceItem models respectively
-                        for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
-                            dataService.create("invoiceitems", $scope.newInvoice.items[i], function (data) {
-                                if (data) {
-                                }
-                                else
-                                    notificationsConfig.error("error while generating invoice items");
-                            })
-                        }
-                        //Update all store quantities for corresponding items in newInvoice
-                        for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
-                            $scope.itemList[i].quantity = $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity
-                            dataService.update("items", $scope.itemList[i].itemId, {
-                                id: $scope.itemList[i].itemId,
-                                description: $scope.itemList[i].description,
-                                quantity: $scope.itemList[i].quantity,
-                                unitPrice: $scope.itemList[i].unitPrice,
-                                isDeleted: false
-                            }, function (data) {
-                                if (data) { }
-                                else notificationsConfig.error("error while updating item quantity");
-                            })
-                        }
-                        notificationsConfig.success("Invoice created!");
-                    }
-                    else
-                        notificationsConfig.error("Error in invoice!");
-                    //window.location = "#/invoices"; // If invoice is created send the user to invoices view
-                    $scope.cancelNewInvoice();
-                    $scope.loadInvoicesInfo();
-                })
+                dataService.create("invoices",
+                    $scope.newInvoice,
+                    function(data) {
+                        //get invoice ID
+                        if (data) {
+                            $scope.newInvoice.id = data;
+                            //Push all items from itemList to newInvoice
+                            for (var i = 0; i < $scope.itemList.length; i += 1)
+                                $scope.pushItemToNewInvoice(i);
+                            //Generate all items from newInvoice as invoiceItem models respectively
+                            for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                                dataService.create("invoiceitems",
+                                    $scope.newInvoice.items[i],
+                                    function(data) {
+                                        if (data) {
+                                        } else
+                                            notificationsConfig.error("error while generating invoice items");
+                                    })
+                            }
+                            //Update all store quantities for corresponding items in newInvoice
+                            for (var i = 0; i < $scope.newInvoice.items.length; i += 1) {
+                                $scope.itemList[i].quantity =
+                                    $scope.itemList[i].quantity - $scope.newInvoice.items[i].quantity
+                                dataService.update("items",
+                                    $scope.itemList[i].itemId,
+                                    {
+                                        id: $scope.itemList[i].itemId,
+                                        description: $scope.itemList[i].description,
+                                        quantity: $scope.itemList[i].quantity,
+                                        unitPrice: $scope.itemList[i].unitPrice,
+                                        isDeleted: false
+                                    },
+                                    function(data) {
+                                        if (data) {
+                                        } else notificationsConfig.error("error while updating item quantity");
+                                    })
+                            }
+                            notificationsConfig.success("Invoice created!");
+                        } else
+                            notificationsConfig.error("Error in invoice!");
+                        //window.location = "#/invoices"; // If invoice is created send the user to invoices view
+                        $scope.cancelNewInvoice();
+                        $scope.loadInvoicesInfo();
+                    });
+                $scope.newInvoice = {
+                    "id": 0,
+                    "date": "",
+                    "items": [],
+                    "status": "Issued",
+                    "customer": null,
+                    "customerName": "",
+                    "billTo": null,
+                    "shipTo": null,
+                    "isDeleted": false
+                }
             }
             else {
                 notificationsConfig.error("All fields must be filled in.");
             }
-            $scope.newInvoice = {
-                "id": 0,
-                "date": "",
-                "items": [],
-                "status": "Issued",
-                "customer": null,
-                "customerName": "",
-                "billTo": null,
-                "shipTo": null,
-                "isDeleted": false
-            }
+            
         }
 
         $scope.updateDraftInvoice = function () {

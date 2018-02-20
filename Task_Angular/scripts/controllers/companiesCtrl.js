@@ -124,8 +124,8 @@
             return $scope.removeOnId === company.id;
         }
         $scope.isInvalid = function (company) {
-            $scope.inputInvalid = (company.name === '' || company.streetAddress === '' || company.zipCode === '' || company.city === '' || company.phoneNumber === ''
-                || company.name === null || company.streetAddress === null || company.zipCode === null || company.city === null || company.phoneNumber === null);
+            $scope.inputInvalid = (company!== undefined && (company.name === '' || company.streetAddress === '' || company.zipCode === '' || company.city === '' || company.phoneNumber === ''
+                || company.name === null || company.streetAddress === null || company.zipCode === null || company.city === null || company.phoneNumber === null));
             return $scope.inputInvalid;
         }
         $scope.loadCompaniesInfo();
