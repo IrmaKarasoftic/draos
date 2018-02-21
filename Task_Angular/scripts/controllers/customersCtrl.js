@@ -6,7 +6,8 @@
         $scope.newCustomer = {
             id: null,
             name: "",
-            company: null
+            company: null,
+            customerImageUrl: 'https://www.atomix.com.au/media/2015/06/atomix_user31.png'
         }
         $scope.loadCustomersInfo = function () {
             $scope.waitCustomers = true;

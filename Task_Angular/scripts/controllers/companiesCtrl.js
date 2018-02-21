@@ -30,7 +30,8 @@
             city: "",
             zipCode: null,
             phoneNumber: null,
-            isDeleted: false
+            isDeleted: false,
+            companyUrl: 'http://waters-company.com/wp-content/themes/watersconsulting_wp_theme/images/city_scape5b.jpg'
         }
         $scope.incorrect = false;
         $scope.validation = function () {
